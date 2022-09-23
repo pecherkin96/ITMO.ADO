@@ -71,6 +71,7 @@ namespace ITMO.ADO.Lab9._1
             this.customerList.Name = "customerList";
             this.customerList.Size = new System.Drawing.Size(121, 21);
             this.customerList.TabIndex = 1;
+            this.customerList.MouseClick += new System.Windows.Forms.MouseEventHandler(this.customerList_MouseClick);
             // 
             // orderlistBox
             // 
@@ -182,6 +183,7 @@ namespace ITMO.ADO.Lab9._1
             this.buttonOut.TabIndex = 14;
             this.buttonOut.Text = "Показать данные";
             this.buttonOut.UseVisualStyleBackColor = true;
+            this.buttonOut.Click += new System.EventHandler(this.buttonOut_Click);
             // 
             // buttonEdit
             // 

@@ -16,7 +16,8 @@ namespace ITMO.ADO.Lab9._1
     {
         
         byte[] Ph;
-        SampleContext context;
+        SampleContext context = new SampleContext();
+
         public CustomerViewer()
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace ITMO.ADO.Lab9._1
                 };
                 context.Customers.Add(customer);
                 context.SaveChanges();
+                Output();
                 textBoxname.Text = String.Empty;
                 textBoxmail.Text = String.Empty;
                 textBoxage.Text = String.Empty;
@@ -55,6 +57,30 @@ namespace ITMO.ADO.Lab9._1
                 Ph = (byte[])converter.ConvertTo(bm, typeof(byte[]));
             }
 
+        }
+        private void Output()
+        {
+            if (this.CustomerradioButton.Checked == true)
+                GridView.DataSource = context.Customers.ToList();
+            else if (this.OrderradioButton.Checked == true)
+                GridView.DataSource = context.Orders.ToList();
+        }
+
+        private void buttonOut_Click(object sender, EventArgs e)
+        {
+            Output();
+            var query = from b in context.Customers
+                        orderby b.Name
+                        select b;
+
+        }
+
+        private void customerList_MouseClick(object sender, MouseEventArgs e)
+        {
+            var query = from b in context.Customers
+                        orderby b.Name
+                        select b;
+            customerList.DataSource = query.ToList();
         }
     }
 
