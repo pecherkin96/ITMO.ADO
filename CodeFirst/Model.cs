@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -10,7 +12,14 @@ namespace CodeFirst
     public class SampleContext : DbContext
     {
         public SampleContext() : base("MyShop")
-        { }
+        {   
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Customer>()
+               .Property(c => c.LastName).IsRequired().HasMaxLength(30);
+        }
+
 
         public DbSet<Customer> Customers { get; set; }
 
@@ -20,14 +29,24 @@ namespace CodeFirst
     public class Customer
     {
         public int CustomerId { get; set; }
-        public string Name { get; set; }
+
+        [Required]
+        [MaxLength(30)]
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+
+        [MaxLength(100)]
         public string Email { get; set; }
-        public int Age { get; set; }
+
+        [Range(8, 100)]
+        public int Age { get; set; }        
+
+        [Column(TypeName = "image")]
         public byte[] Photo { get; set; }
 
         public override string ToString()
         {
-            string s = Name + ", электронный адрес: " + Email;
+            string s = FirstName + ", электронный адрес: " + Email;
             return s;
         }
         // Ссылка на заказы

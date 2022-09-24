@@ -50,7 +50,7 @@ namespace ITMO.ADO.Lab9._1
             this.OrderradioButton = new System.Windows.Forms.RadioButton();
             this.CustomerradioButton = new System.Windows.Forms.RadioButton();
             this.textBoxCustomer = new System.Windows.Forms.TextBox();
-            this.labelId = new System.Windows.Forms.Label();
+            this.labelid = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,7 @@ namespace ITMO.ADO.Lab9._1
             this.GridView.Name = "GridView";
             this.GridView.Size = new System.Drawing.Size(800, 150);
             this.GridView.TabIndex = 0;
+            this.GridView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.GridView_CellClick);
             // 
             // customerList
             // 
@@ -193,6 +194,7 @@ namespace ITMO.ADO.Lab9._1
             this.buttonEdit.TabIndex = 15;
             this.buttonEdit.Text = "Редактировать";
             this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
             // 
             // buttonDel
             // 
@@ -202,6 +204,7 @@ namespace ITMO.ADO.Lab9._1
             this.buttonDel.TabIndex = 16;
             this.buttonDel.Text = "Удалить";
             this.buttonDel.UseVisualStyleBackColor = true;
+            this.buttonDel.Click += new System.EventHandler(this.buttonDel_Click);
             // 
             // groupBox1
             // 
@@ -243,21 +246,21 @@ namespace ITMO.ADO.Lab9._1
             this.textBoxCustomer.Size = new System.Drawing.Size(252, 20);
             this.textBoxCustomer.TabIndex = 18;
             // 
-            // labelId
+            // labelid
             // 
-            this.labelId.AutoSize = true;
-            this.labelId.Location = new System.Drawing.Point(386, 146);
-            this.labelId.Name = "labelId";
-            this.labelId.Size = new System.Drawing.Size(16, 13);
-            this.labelId.TabIndex = 19;
-            this.labelId.Text = "Id";
+            this.labelid.AutoSize = true;
+            this.labelid.Location = new System.Drawing.Point(386, 146);
+            this.labelid.Name = "labelid";
+            this.labelid.Size = new System.Drawing.Size(16, 13);
+            this.labelid.TabIndex = 19;
+            this.labelid.Text = "Id";
             // 
             // CustomerViewer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 338);
-            this.Controls.Add(this.labelId);
+            this.Controls.Add(this.labelid);
             this.Controls.Add(this.textBoxCustomer);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonDel);
@@ -279,6 +282,7 @@ namespace ITMO.ADO.Lab9._1
             this.Controls.Add(this.GridView);
             this.Name = "CustomerViewer";
             this.Text = "Customer Viewer";
+            this.Load += new System.EventHandler(this.CustomerViewer_Load);
             ((System.ComponentModel.ISupportInitialize)(this.GridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -310,7 +314,7 @@ namespace ITMO.ADO.Lab9._1
         private System.Windows.Forms.RadioButton OrderradioButton;
         private System.Windows.Forms.RadioButton CustomerradioButton;
         private System.Windows.Forms.TextBox textBoxCustomer;
-        private System.Windows.Forms.Label labelId;
+        private System.Windows.Forms.Label labelid;
     }
 }
 
